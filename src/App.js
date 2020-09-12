@@ -11,15 +11,15 @@ const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
 
 function App() {
 
-  const [firstFamilies, setFirstFamily] = useState([])
+  const [firstFamilyData, setFirstFamilyData] = useState('[{"text": "Test"}]')
 
-  const getPresidents = () => {
-    fetch(firstFamilyURL)
-    .then(res=> res.json())
-    .then(ffData => {
-      console.log(ffData)
-    })
-  }
+  // const getPresidents = () => {
+  //   fetch(firstFamilyURL)
+  //   .then(res=> res.json())
+  //   .then(ffData => {
+  //     console.log(ffData)
+  //   })
+  // }
 
   return (
     <div className="App">
@@ -28,13 +28,15 @@ function App() {
         <h1>First Families API</h1>
       </header>
 
-        <RequestForm/>
+        <RequestForm apiURL = {firstFamilyURL} onHTTPRequest = {setFirstFamilyData}/>
 
-      <header className="App-footer">
+        <p>{firstFamilyData}</p>
+
+      <footer className="App-footer">
         <a href="https://github.com/iandemed">
           <img src = {gitHub} alt="GitHub"/>
         </a>
-      </header>
+      </footer>
 
     </div>
   );

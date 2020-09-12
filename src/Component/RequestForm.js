@@ -3,7 +3,7 @@ import React from 'react'
 import '../style/RequestForm.css'
 
 
-const RequestForm = () => {
+const RequestForm = ({apiURL, onHTTPRequest}) => {
 
     return (
         <form className="HTTP-request">
@@ -13,11 +13,12 @@ const RequestForm = () => {
                 <option value="PUT"> PUT </option>            
                 <option value="DELETE"> DELETE </option>            
             </select>
-            <p>https://first-families-api.herokuapp.com/</p>
+            <p>{apiURL}</p>
             <select name="resource">
-                <option value="president/"> president </option>            
-                <option value="firstSpouse/"> firstSpouse </option>                       
+                <option value="president"> president </option>            
+                <option value="firstSpouse"> firstSpouse </option>                       
             </select>
+            <p>/</p>
         </form>
     )
 }
