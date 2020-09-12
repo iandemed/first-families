@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+
 import presIcon from './imgs/president-icon-white.svg'
 import gitHub from './imgs/github-mark.svg'
-import './App.css';
+
+import RequestForm from './Component/RequestForm'
+
+import './App.css'
 
 const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
 
@@ -24,7 +28,7 @@ function App() {
         <h1>First Families API</h1>
       </header>
 
-      <button onClick={getPresidents}> GET </button>
+        <RequestForm/>
 
       <header className="App-footer">
         <a href="https://github.com/iandemed">
@@ -35,5 +39,7 @@ function App() {
     </div>
   );
 }
+
+//<button onClick={getPresidents}> GET </button>}
 
 export default App;
