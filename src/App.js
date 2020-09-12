@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import presIcon from './imgs/president-icon-white.svg'
 import gitHub from './imgs/github-mark.svg'
 
-import RequestForm from './Component/RequestForm'
+import HTTPRequest from './Component/HTTPRequest'
 
 import './style/App.css'
 
@@ -12,10 +12,29 @@ const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
 function App() {
 
   const [firstFamilyData, setFirstFamilyData] = useState('[{"text": "Test"}]')
+  const [verb, setVerb] = useState('GET')
+  const [resource, setResource] = useState('president')
 
   const makeHTTPRequest = (verb, URL) => {
     console.log(verb, URL)
   }
+
+  const handleVerbSelect = (e) => {
+    setVerb(e.target.value)
+    console.log(e.target.value)
+  }
+
+  const handleResourceSelect = (e) => {
+    setResource(e.target.value)
+    console.log(e.target.value)
+  }
+
+  const handleSubmit = (e) => {      
+    console.log(verb, `${firstFamilyURL}${resource}`)
+    e.preventDefault()
+  }
+
+
 
   // const getPresidents = () => {
   //   fetch(firstFamilyURL)
@@ -39,7 +58,12 @@ function App() {
         <h1>First Families API</h1>
       </header>
 
-        <RequestForm apiURL = {firstFamilyURL} onHTTPRequest = {makeHTTPRequest}/>
+        <HTTPRequest 
+          apiURL = {firstFamilyURL} 
+          onHTTPRequest = {handleSubmit} 
+          onVerbSelect = {handleVerbSelect} 
+          onResourceSelect ={handleResourceSelect} 
+        />
 
         {createForm()}
 
