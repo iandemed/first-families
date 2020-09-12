@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import presIcon from './president-icon-white.svg';
+import React, { useEffect, useState } from 'react'
+import presIcon from './imgs/president-icon-white.svg'
+import gitHub from './imgs/github-mark.svg'
 import './App.css';
 
 const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
@@ -24,6 +25,13 @@ function App() {
       </header>
 
       <button onClick={getPresidents}> GET </button>
+
+      <header className="App-footer">
+        <a href="https://github.com/iandemed">
+          <img src = {gitHub} alt="GitHub"/>
+        </a>
+      </header>
+
     </div>
   );
 }
