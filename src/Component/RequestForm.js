@@ -22,7 +22,7 @@ const RequestForm = ({apiURL, onHTTPRequest}) => {
 
     const handleSubmit = (e) => {
         
-        console.log(`${verb} ${apiURL}${resource}`)
+        onHTTPRequest(verb, `${apiURL}${resource}`)
         e.preventDefault()
     }
 
@@ -42,7 +42,7 @@ const RequestForm = ({apiURL, onHTTPRequest}) => {
                 </select>
                 <p>/</p>
             </div>
-            <input type="submit" value="Submit" className="submit" onClick={handleSubmit}/>
+            <button type="submit" className="submit" onClick={handleSubmit}> SUBMIT </button>
         </form>
     )
 }

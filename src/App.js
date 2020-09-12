@@ -13,6 +13,10 @@ function App() {
 
   const [firstFamilyData, setFirstFamilyData] = useState('[{"text": "Test"}]')
 
+  const makeHTTPRequest = (verb, URL) => {
+    console.log(verb, URL)
+  }
+
   // const getPresidents = () => {
   //   fetch(firstFamilyURL)
   //   .then(res=> res.json())
@@ -21,6 +25,13 @@ function App() {
   //   })
   // }
 
+
+  const createForm = () => {
+    return (
+      <p>{firstFamilyData}</p>
+    )
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -28,15 +39,16 @@ function App() {
         <h1>First Families API</h1>
       </header>
 
-        <RequestForm apiURL = {firstFamilyURL} onHTTPRequest = {setFirstFamilyData}/>
+        <RequestForm apiURL = {firstFamilyURL} onHTTPRequest = {makeHTTPRequest}/>
 
-        <p>{firstFamilyData}</p>
+        {createForm()}
 
       <footer className="App-footer">
         <a href="https://github.com/iandemed">
           <img src = {gitHub} alt="GitHub"/>
         </a>
       </footer>
+
 
     </div>
   );
