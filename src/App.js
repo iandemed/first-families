@@ -5,7 +5,7 @@ import gitHub from './imgs/github-mark.svg'
 
 import RequestForm from './Component/RequestForm'
 
-import './App.css'
+import './style/App.css'
 
 const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
 
