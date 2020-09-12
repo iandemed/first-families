@@ -8,10 +8,22 @@ import '../style/RequestForm.css'
 const RequestForm = ({apiURL, onHTTPRequest}) => {
 
     const [verb, setVerb] = useState('GET')
+    const [resource, setResource] = useState('president')
 
     const handleVerbSelect = (e) => {
         setVerb(e.target.value)
         console.log(e.target.value)
+    }
+
+    const handleResourceSelect = (e) => {
+        setResource(e.target.value)
+        console.log(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        
+        console.log(`${verb} ${apiURL}${resource}`)
+        e.preventDefault()
     }
 
     return (
@@ -24,15 +36,13 @@ const RequestForm = ({apiURL, onHTTPRequest}) => {
                     <option value="DELETE"> DELETE </option>            
                 </select>
                 <p>{apiURL}</p>
-                <select name="resource">
+                <select value={resource} onChange={handleResourceSelect}>
                     <option value="president"> president </option>            
                     <option value="firstSpouse"> firstSpouse </option>                       
                 </select>
                 <p>/</p>
             </div>
-            <div className="submit">
-                <p>SUBMIT</p>
-            </div>
+            <input type="submit" value="Submit" className="submit" onClick={handleSubmit}/>
         </form>
     )
 }
