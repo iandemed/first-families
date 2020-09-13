@@ -1,11 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-import '../style/RequestForm.css'
-
-
+import '../style/HTTPRequest.css'
 
 
-const HTTPRequest = ({apiURL, onHTTPRequest, onVerbSelect, onResourceSelect}) => {
+const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect}) => {
     
     return (
         <form className="HTTP-request">
@@ -23,7 +21,6 @@ const HTTPRequest = ({apiURL, onHTTPRequest, onVerbSelect, onResourceSelect}) =>
                 </select>
                 <p>/</p>
             </div>
-            <button type="submit" className="submit" onClick={onHTTPRequest}> SUBMIT </button>
         </form>
     )
 }

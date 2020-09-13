@@ -4,6 +4,7 @@ import presIcon from './imgs/president-icon-white.svg'
 import gitHub from './imgs/github-mark.svg'
 
 import HTTPRequest from './Component/HTTPRequest'
+import RequestBody from './Component/RequestBody'
 
 import './style/App.css'
 
@@ -59,13 +60,15 @@ function App() {
       </header>
 
         <HTTPRequest 
-          apiURL = {firstFamilyURL} 
-          onHTTPRequest = {handleSubmit} 
+          apiURL = {firstFamilyURL}  
           onVerbSelect = {handleVerbSelect} 
           onResourceSelect ={handleResourceSelect} 
         />
 
-        {createForm()}
+        <RequestBody 
+          verb = {verb}
+          onHTTPRequest = {handleSubmit}
+        />
 
       <footer className="App-footer">
         <a href="https://github.com/iandemed">
