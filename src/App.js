@@ -40,9 +40,16 @@ function App() {
     console.log(e.target.value)
   }
 
-  const handleSubmit = (e) => {      
-    console.log(verb, `${firstFamilyURL}${resource}`)
-    makeHTTPRequest(verb, `${firstFamilyURL}${resource}`)
+  const handleSubmit = (e, body) => {      
+  
+    // if(verb === 'POST' | verb === 'PUT'){
+      
+    // }
+    
+    // makeHTTPRequest(verb, `${firstFamilyURL}${resource}`)
+
+    console.log(body)
+
     e.preventDefault()
   }
 
