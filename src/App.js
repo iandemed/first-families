@@ -72,15 +72,6 @@ const prepareRequestBody = (body) => {
 
 }
 
-  // const getPresidents = () => {
-  //   fetch(firstFamilyURL)
-  //   .then(res=> res.json())
-  //   .then(ffData => {
-  //     console.log(ffData)
-  //   })
-  // }
-
-
   const createForm = () => {
     return (
       <p>{firstFamilyData}</p>
@@ -96,7 +87,7 @@ const prepareRequestBody = (body) => {
 
         <HTTPRequest 
           apiURL = {firstFamilyURL}  
-          onVerbSelect = {handleVerbSelect} 
+          onVerbSelect = {handleVerbSelect}
           onResourceSelect ={handleResourceSelect} 
         />
 
