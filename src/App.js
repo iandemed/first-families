@@ -9,6 +9,7 @@ import RequestBody from './Component/RequestBody'
 import './style/App.css'
 
 const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
+const axios = require(`axios`).default
 
 function App() {
 
@@ -16,8 +17,17 @@ function App() {
   const [verb, setVerb] = useState('GET')
   const [resource, setResource] = useState('president')
 
-  const makeHTTPRequest = (verb, URL) => {
-    console.log(verb, URL)
+  const makeHTTPRequest = (verb, url) => {
+    
+    if (verb === 'GET'){
+      console.log(url)
+      axios.get(url)
+        .then( (res => {
+          console.log(JSON.stringify(res.data, null, 4))
+        }))
+    } else {
+      console.log(verb)
+    }
   }
 
   const handleVerbSelect = (e) => {
@@ -32,6 +42,7 @@ function App() {
 
   const handleSubmit = (e) => {      
     console.log(verb, `${firstFamilyURL}${resource}`)
+    makeHTTPRequest(verb, `${firstFamilyURL}${resource}`)
     e.preventDefault()
   }
 
