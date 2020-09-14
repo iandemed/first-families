@@ -8,7 +8,7 @@ const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect}) => {
     return (
         <form className="HTTP-request">
             <div className="request-line">
-                <select value={"GET"} onChange={onVerbSelect}>
+                <select onChange={onVerbSelect}>
                     <option value="GET"> GET </option>            
                     <option value="POST"> POST </option>            
                     <option value="PUT"> PUT </option>            

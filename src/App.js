@@ -17,16 +17,18 @@ function App() {
   const [verb, setVerb] = useState('GET')
   const [resource, setResource] = useState('president')
 
-  const makeHTTPRequest = (verb, url) => {
+  const makeHTTPRequest = (verb, url, body) => {
     
     if (verb === 'GET'){
-      console.log(url)
       axios.get(url)
         .then( (res => {
           console.log(JSON.stringify(res.data, null, 4))
         }))
-    } else {
-      console.log(verb)
+    } else if (verb === 'POST') {
+      axios.post(url, body)
+        .then( (res => {
+          console.log(JSON.stringify(res.data, null, 4))
+        }))
     }
   }
 
@@ -42,18 +44,33 @@ function App() {
 
   const handleSubmit = (e, body) => {      
   
-    // if(verb === 'POST' | verb === 'PUT'){
-      
-    // }
-    
-    // makeHTTPRequest(verb, `${firstFamilyURL}${resource}`)
+    if (body){
+        let requestBody = prepareRequestBody(body)
+        makeHTTPRequest(verb, `${firstFamilyURL}${resource}`, body)
+    } else {
+      makeHTTPRequest(verb, `${firstFamilyURL}${resource}`)
+    }
 
-    console.log(body)
 
     e.preventDefault()
   }
 
+const prepareRequestBody = (body) => {
 
+  // Convert date strings into Date objects
+  if (body.date){
+    body.date = new Date(body.date)
+  }
+  if (body.born){
+    body.born = new Date(body.born)
+  }
+  if (body.died){
+    body.died = new Date(body.died)
+  }
+
+  return body
+
+}
 
   // const getPresidents = () => {
   //   fetch(firstFamilyURL)
