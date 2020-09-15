@@ -6,56 +6,18 @@ module.exports = {
   /* Helper functions to make HTTP requests */
 
   get: (url) => {
-    axios.get(url)
-    .then( (res) => {
-      if (!Array.isArray(res.data)){
-        let json = [res.data]
-        console.log(json)
-        return json
-      } else {
-        return res.data
-      }
-    })
+    return axios.get(url)
   },
 
-
   post: (url, body) => {
-    axios.post(url, body)
-      .then( (res) => {
-        if (!Array.isArray(res.data)){
-          let json = [res.data]
-          return json       
-        }
-        else {
-          return res.data
-        }
-
-    })
+    return axios.post(url, body)
   },
 
   put: (url, body) => {
-    axios.put(url, body)
-    .then( (res) => {
-      if (!Array.isArray(res.data)){
-        let json = [res.data]
-        return json
-      } else {
-        return res.data
-      }
-
-    })
+    return axios.put(url, body)
   },
   delete: (url) => {
-    axios.delete(url)
-      .then( (res) => {
-        if (!Array.isArray(res.data)){
-          let json = [res.data]
-          return json       
-        }
-        else {
-           return res.data
-         }
-      })
+    return axios.delete(url)
   },
 
   // Check if the minimally required entries are included
@@ -88,6 +50,11 @@ module.exports = {
         
       return body
       
-  }
+  },
 
+  data: (verb, url, body) => {
+
+    this[String.toLowerCase(verb)]()
+
+  }
 }

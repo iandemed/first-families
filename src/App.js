@@ -8,7 +8,7 @@ import RequestBody from './Component/RequestBody'
 
 import './style/App.css'
 
-const requestHelper = require('./requestHelper.js')
+const requests = require('./requests.js')
 
 const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
 
@@ -20,6 +20,8 @@ function App() {
 
   const [firstFamilyData, setFirstFamilyData] = useState([''])
 
+  const [newHTTPRequest, setNewHTTPRequest] = useState(true)
+
   useEffect(() => {
     fetch(firstFamilyURL)
     .then(res=> res.json())
@@ -29,17 +31,45 @@ function App() {
     })
   }, [])
 
+  useEffect(() => {
+    console.log('It worked')
+  }, [newHTTPRequest])
+
   const makeHTTPRequest = (verb, url, body) => {
-    
+
     if (verb === 'GET'){
-      requestHelper.get(url)
+      console.log(url)
+      requests.get(url)
+        .then( res => {
+          setFirstFamilyData(res.data)
+        })
     } else if (verb === 'POST') {
-      requestHelper.validPost(body, resource) ? setFirstFamilyData(requestHelper.post(url, body)) : console.log("Invalid POST")
+      if (requests.validPost(body, resource)){
+       requests.post(url, body)
+        .then( res => {
+          setFirstFamilyData(res.data)
+        })
+      } else{
+        console.log("Invalid POST")
+      }
     } else if (verb === 'PUT'){
-      requestHelper.validPut(body) ? setFirstFamilyData(requestHelper.put(url, body)) : console.log("Invalid POST")
+      if (requests.validPut(body, resource)){
+        requests.put(url, body)
+        .then( res => {
+          setFirstFamilyData(res.data)
+        })
+      } else{
+        console.log("Invalid POST")
+      }
     } else if (verb === 'DELETE'){
-      requestHelper.delete(url)
+      requests.delete(url)
+        .then( res => {
+          setFirstFamilyData(res.data)
+        })
     }
+
+    setNewHTTPRequest(false)
+
   }
 
   const handleVerbSelect = (e) => {
@@ -56,8 +86,9 @@ function App() {
 
   const handleSubmit = (e, body) => {      
   
+
     if (body){
-      requestHelper.prepare(body, verb)
+      requests.prepare(body, verb)
 
       if(verb === 'PUT'){
         makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`, body)
@@ -73,7 +104,6 @@ function App() {
   }
 
   const stringify = (json) => {
-    console.log(JSON.stringify(json, null, '\t'))
     return (
     <pre>
         {
