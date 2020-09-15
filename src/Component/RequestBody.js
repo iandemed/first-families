@@ -12,7 +12,7 @@ const RequestBody = ({verb, resource, onHTTPRequest}) => {
     }
 
 
-    if(verb === "POST"){
+    if(verb === "POST" | verb === 'PUT'){
         return(
             <div className="HTTP-body">
             <form>

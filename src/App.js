@@ -17,6 +17,7 @@ function App() {
   const [firstFamilyData, setFirstFamilyData] = useState('[{"text": "Test"}]')
   const [verb, setVerb] = useState('GET')
   const [resource, setResource] = useState('president')
+  const [id, setID] = useState('')
 
   const makeHTTPRequest = (verb, url, body) => {
     
@@ -33,21 +34,23 @@ function App() {
 
   const handleVerbSelect = (e) => {
     setVerb(e.target.value)
-    console.log(e.target.value)
   }
 
   const handleResourceSelect = (e) => {
     setResource(e.target.value)
-    console.log(e.target.value)
+  }
+
+  const handleIdInput = (e) => {
+    setID(e.target.value)
   }
 
   const handleSubmit = (e, body) => {      
   
     if (body){
       requestHelper.prepare(body, verb)
-      makeHTTPRequest(verb, `${firstFamilyURL}${resource}`, body)
+      makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`, body)
     } else {
-      makeHTTPRequest(verb, `${firstFamilyURL}${resource}`)
+      makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`)
     }
 
 
@@ -72,7 +75,9 @@ function App() {
         <HTTPRequest 
           apiURL = {firstFamilyURL}  
           onVerbSelect = {handleVerbSelect}
-          onResourceSelect ={handleResourceSelect} 
+          onResourceSelect ={handleResourceSelect}
+          onIdChange={handleIdInput}
+          verb = {verb} 
         />
 
         <RequestBody 

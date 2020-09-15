@@ -3,8 +3,24 @@ import React from 'react'
 import '../style/HTTPRequest.css'
 
 
-const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect}) => {
+const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect, onIdChange, verb}) => {
     
+    // Conditionally render the _id field so that users do not input an _id
+    // when they do not have to
+    const idBox = (verb) => {
+        if (verb !== 'POST'){
+            return(
+                <input 
+                    type="text" 
+                    name = "_id" 
+                    placeholder="1"
+                    onChange={onIdChange}
+                />
+            )
+        }
+    }
+    
+
     return (
         <form className="HTTP-request">
             <div className="request-line">
@@ -20,6 +36,7 @@ const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect}) => {
                     <option value="firstSpouse"> firstSpouse </option>                       
                 </select>
                 <p>/</p>
+                {idBox(verb)}
             </div>
         </form>
     )
