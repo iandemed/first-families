@@ -31,7 +31,7 @@ const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect, onIdChange, verb})
                     <option value="DELETE"> DELETE </option>            
                 </select>
                 <p>{apiURL}</p>
-                <select value={"President"} onChange={onResourceSelect}>
+                <select onChange={onResourceSelect}>
                     <option value="president"> president </option>            
                     <option value="firstSpouse"> firstSpouse </option>                       
                 </select>

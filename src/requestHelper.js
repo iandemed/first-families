@@ -24,7 +24,7 @@ module.exports = {
     if (resource === 'president'){
       return (body["_id"] && body.born)
     } else if (resource === 'firstSpouse'){
-      return (body["_id"] && body.partner && body.born)
+      return (body["_id"] && body.partner !== [""] && body.born)
     }
   },
 

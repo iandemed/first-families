@@ -24,6 +24,7 @@ function App() {
     if (verb === 'GET'){
       requestHelper.get(url)
     } else if (verb === 'POST') {
+      console.log(body)
       requestHelper.validPost(body, resource) ? requestHelper.post(url, body) : console.log("Invalid POST")
     } else if (verb === 'PUT'){
       requestHelper.put(url, body)
