@@ -26,7 +26,7 @@ function App() {
     } else if (verb === 'POST') {
       requestHelper.validPost(body, resource) ? requestHelper.post(url, body) : console.log("Invalid POST")
     } else if (verb === 'PUT'){
-      requestHelper.put(url, body)
+      requestHelper.validPut(body) ? requestHelper.put(url, body) : console.log("Invalid POST")
     } else if (verb === 'DELETE'){
       requestHelper.delete(url)
     }

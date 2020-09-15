@@ -28,6 +28,10 @@ module.exports = {
     }
   },
 
+  validPut: (body) => {
+    return (Object.keys(body).length !== 0)
+  },
+
   put: (url, body) => {
     axios.put(url, body)
     .then( (res) => {
