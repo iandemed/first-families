@@ -25,36 +25,46 @@ const RequestBody = ({verb, resource, onHTTPRequest}) => {
         return(
             <div className="HTTP-body">
             <form>
-                <label> _id: </label>
-                <input 
-                    type="text" 
-                    name = "_id" 
-                    placeholder="1" 
-                    onChange={handleInput}/>
-                <label> name: </label>
-                <input 
-                    type="text" 
-                    name = "name" 
-                    placeholder="George Washington"
-                    onChange={handleInput}/>
-                <label> partner: </label>
-                <input 
-                    type="text" 
-                    name = "partner" 
-                    placeholder='1p'
-                    onChange={handleInput}/>
-                <label> born: </label>
-                <input 
-                    type="text" 
-                    name = "born" 
-                    placeholder="1732-02-22"
-                    onChange={handleInput}/>
-                <label> died: </label>
-                <input 
-                    type="text" 
-                    name = "username" 
-                    placeholder="1802-05-22"
-                    onChange={handleInput}/>
+                <div className="form-item">
+                    <label> _id: </label>
+                    <input 
+                        type="text" 
+                        name = "_id" 
+                        placeholder="1" 
+                        onChange={handleInput}/>
+                    </div>
+                <div className="form-item">
+                    <label> name: </label>
+                    <input 
+                        type="text" 
+                        name = "name" 
+                        placeholder="George Washington"
+                        onChange={handleInput}/>
+                    </div>
+                <div className="form-item">
+                    <label> partner: </label>
+                    <input 
+                        type="text" 
+                        name = "partner" 
+                        placeholder='1p'
+                        onChange={handleInput}/>
+                    </div>
+                <div className="form-item">
+                    <label> born: </label>
+                    <input 
+                        type="text" 
+                        name = "born" 
+                        placeholder="1732-02-22"
+                        onChange={handleInput}/>
+                    </div>
+                <div className="form-item">
+                    <label> died: </label>
+                    <input 
+                        type="text" 
+                        name = "username" 
+                        placeholder="1802-05-22"
+                        onChange={handleInput}/>
+                </div>
             </form>
             <button 
                 type="submit" 

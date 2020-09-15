@@ -50,8 +50,6 @@ function App() {
       requestHelper.prepare(body, verb)
 
 
-
-
       makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`, body)
     } else {
       makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`)
@@ -75,6 +73,7 @@ function App() {
         <h1>First Families API</h1>
       </header>
 
+      <main>
         <HTTPRequest 
           apiURL = {firstFamilyURL}  
           onVerbSelect = {handleVerbSelect}
@@ -87,7 +86,7 @@ function App() {
           verb = {verb}
           onHTTPRequest = {handleSubmit}
         />
-
+      </main>
       <footer className="App-footer">
         <a href="https://github.com/iandemed">
           <img src = {gitHub} alt="GitHub"/>
