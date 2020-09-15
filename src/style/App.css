@@ -42,6 +42,12 @@ main > * {
   margin: 20px;
 }
 
+.request-output{
+  width: 60%;
+  max-height: 340px;
+  overflow-y: scroll;
+}
+
 .App-footer {
   background-color: #282c34;
   

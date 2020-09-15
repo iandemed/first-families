@@ -8,7 +8,13 @@ module.exports = {
   get: (url) => {
     axios.get(url)
     .then( (res) => {
-      console.log(JSON.stringify(res.data, null, 4))
+      if (!Array.isArray(res.data)){
+        let json = [res.data]
+        console.log(json)
+        return json
+      } else {
+        return res.data
+      }
     })
   },
 
@@ -16,7 +22,14 @@ module.exports = {
   post: (url, body) => {
     axios.post(url, body)
       .then( (res) => {
-        console.log(JSON.stringify(res.data, null, 4))
+        if (!Array.isArray(res.data)){
+          let json = [res.data]
+          return json       
+        }
+        else {
+          return res.data
+        }
+
     })
   },
 
@@ -35,13 +48,25 @@ module.exports = {
   put: (url, body) => {
     axios.put(url, body)
     .then( (res) => {
-      console.log(res)
+      if (!Array.isArray(res.data)){
+        let json = [res.data]
+        return json
+      } else {
+        return res.data
+      }
+
     })
   },
   delete: (url) => {
     axios.delete(url)
       .then( (res) => {
-        console.log(JSON.stringify(res.data, null, 4))
+        if (!Array.isArray(res.data)){
+          let json = [res.data]
+          return json       
+        }
+        else {
+           return res.data
+         }
       })
   },
 
@@ -61,6 +86,10 @@ module.exports = {
         
       return body
       
-  }
+  },
+
+  convertToJSON: (body) => {
+    return JSON.stringify(body, null, 4)
+  } 
 
 }

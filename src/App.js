@@ -14,19 +14,29 @@ const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
 
 function App() {
 
-  const [firstFamilyData, setFirstFamilyData] = useState('[{"text": "Test"}]')
   const [verb, setVerb] = useState('GET')
   const [resource, setResource] = useState('president')
   const [id, setID] = useState('')
+
+  const [firstFamilyData, setFirstFamilyData] = useState([''])
+
+  useEffect(() => {
+    fetch(firstFamilyURL)
+    .then(res=> res.json())
+    .then(data => {
+      setFirstFamilyData(data)
+      console.log('Fetched data from API')
+    })
+  }, [])
 
   const makeHTTPRequest = (verb, url, body) => {
     
     if (verb === 'GET'){
       requestHelper.get(url)
     } else if (verb === 'POST') {
-      requestHelper.validPost(body, resource) ? requestHelper.post(url, body) : console.log("Invalid POST")
+      requestHelper.validPost(body, resource) ? setFirstFamilyData(requestHelper.post(url, body)) : console.log("Invalid POST")
     } else if (verb === 'PUT'){
-      requestHelper.validPut(body) ? requestHelper.put(url, body) : console.log("Invalid POST")
+      requestHelper.validPut(body) ? setFirstFamilyData(requestHelper.put(url, body)) : console.log("Invalid POST")
     } else if (verb === 'DELETE'){
       requestHelper.delete(url)
     }
@@ -62,13 +72,16 @@ function App() {
     e.preventDefault()
   }
 
-
-
-  const createForm = () => {
+  const stringify = (json) => {
+    console.log(JSON.stringify(json, null, '\t'))
     return (
-      <p>{firstFamilyData}</p>
+    <pre>
+        {
+        `${JSON.stringify(json, null, '\t')}`
+        }
+    </pre>
     )
-  }
+}
 
   return (
     <div className="App">
@@ -78,6 +91,11 @@ function App() {
       </header>
 
       <main>
+
+        <div className ="request-output">
+          {stringify(firstFamilyData)}
+        </div>
+
         <HTTPRequest 
           apiURL = {firstFamilyURL}  
           onVerbSelect = {handleVerbSelect}
@@ -90,6 +108,7 @@ function App() {
           verb = {verb}
           onHTTPRequest = {handleSubmit}
         />
+
       </main>
       <footer className="App-footer">
         <a href="https://github.com/iandemed">

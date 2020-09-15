@@ -47,4 +47,4 @@ const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect, onIdChange, verb})
     )
 }
 
-export default HTTPRequest;
+export default HTTPRequest
