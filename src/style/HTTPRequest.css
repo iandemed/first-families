@@ -12,6 +12,7 @@
 
 .request-line p {
     margin: 0px;
+    white-space: nowrap;
 }
 
 .request-line > * {

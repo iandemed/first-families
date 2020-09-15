@@ -33,18 +33,6 @@ module.exports = {
     })
   },
 
-  validPost: (body, resource) => {
-    if (resource === 'president'){
-      return (body["_id"] && body.born)
-    } else if (resource === 'firstSpouse'){
-      return (body["_id"] && body.partner !== [""] && body.born)
-    }
-  },
-
-  validPut: (body) => {
-    return (Object.keys(body).length !== 0)
-  },
-
   put: (url, body) => {
     axios.put(url, body)
     .then( (res) => {
@@ -70,6 +58,20 @@ module.exports = {
       })
   },
 
+  // Check if the minimally required entries are included
+  validPost: (body, resource) => {
+    if (resource === 'president'){
+      return (body["_id"] && body.born)
+    } else if (resource === 'firstSpouse'){
+      return (body["_id"] && body.partner !== [""] && body.born)
+    }
+  },
+
+  // Check if there is at least one entry that has changed
+  validPut: (body) => {
+    return (Object.keys(body).length !== 0)
+  },
+
   /* Helper functions to prepare the body for the HTTP requests */
   prepare: (body, verb) => {
 
@@ -86,10 +88,6 @@ module.exports = {
         
       return body
       
-  },
-
-  convertToJSON: (body) => {
-    return JSON.stringify(body, null, 4)
-  } 
+  }
 
 }

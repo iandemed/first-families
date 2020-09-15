@@ -86,15 +86,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={presIcon}  alt="logo" />
+        <a href="./">
+          <img src={presIcon}  alt="logo" />
+        </a>
         <h1>First Families API</h1>
       </header>
 
       <main>
-
-        <div className ="request-output">
-          {stringify(firstFamilyData)}
-        </div>
 
         <HTTPRequest 
           apiURL = {firstFamilyURL}  
@@ -108,6 +106,10 @@ function App() {
           verb = {verb}
           onHTTPRequest = {handleSubmit}
         />
+
+        <div className ="request-output">
+          {stringify(firstFamilyData)}
+        </div>
 
       </main>
       <footer className="App-footer">
