@@ -24,7 +24,6 @@ function App() {
     if (verb === 'GET'){
       requestHelper.get(url)
     } else if (verb === 'POST') {
-      console.log(body)
       requestHelper.validPost(body, resource) ? requestHelper.post(url, body) : console.log("Invalid POST")
     } else if (verb === 'PUT'){
       requestHelper.put(url, body)
@@ -50,8 +49,12 @@ function App() {
     if (body){
       requestHelper.prepare(body, verb)
 
-
-      makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`, body)
+      if(verb === 'PUT'){
+        makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`, body)
+      } else {
+        makeHTTPRequest(verb, `${firstFamilyURL}${resource}`, body)
+      }
+      
     } else {
       makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`)
     }
