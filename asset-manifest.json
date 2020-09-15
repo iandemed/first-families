@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/first-families/static/css/main.1b408580.chunk.css",
+    "main.js": "/first-families/static/js/main.8f1f8ed1.chunk.js",
+    "main.js.map": "/first-families/static/js/main.8f1f8ed1.chunk.js.map",
+    "runtime-main.js": "/first-families/static/js/runtime-main.93021532.js",
+    "runtime-main.js.map": "/first-families/static/js/runtime-main.93021532.js.map",
+    "static/js/2.841275b2.chunk.js": "/first-families/static/js/2.841275b2.chunk.js",
+    "static/js/2.841275b2.chunk.js.map": "/first-families/static/js/2.841275b2.chunk.js.map",
+    "index.html": "/first-families/index.html",
+    "precache-manifest.65f56f6a74513f0f60ba6ce072c38f74.js": "/first-families/precache-manifest.65f56f6a74513f0f60ba6ce072c38f74.js",
+    "service-worker.js": "/first-families/service-worker.js",
+    "static/css/main.1b408580.chunk.css.map": "/first-families/static/css/main.1b408580.chunk.css.map",
+    "static/js/2.841275b2.chunk.js.LICENSE.txt": "/first-families/static/js/2.841275b2.chunk.js.LICENSE.txt",
+    "static/media/github-mark.svg": "/first-families/static/media/github-mark.63315502.svg",
+    "static/media/president-icon-white.svg": "/first-families/static/media/president-icon-white.dac9b2ca.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93021532.js",
+    "static/js/2.841275b2.chunk.js",
+    "static/css/main.1b408580.chunk.css",
+    "static/js/main.8f1f8ed1.chunk.js"
+  ]
+}
