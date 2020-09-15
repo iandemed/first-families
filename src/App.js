@@ -24,7 +24,7 @@ function App() {
     if (verb === 'GET'){
       requestHelper.get(url)
     } else if (verb === 'POST') {
-      requestHelper.post(url, body)
+      requestHelper.validPost(body, resource) ? requestHelper.post(url, body) : console.log("Invalid POST")
     } else if (verb === 'PUT'){
       requestHelper.put(url, body)
     } else if (verb === 'DELETE'){
@@ -48,11 +48,14 @@ function App() {
   
     if (body){
       requestHelper.prepare(body, verb)
+
+
+
+
       makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`, body)
     } else {
       makeHTTPRequest(verb, `${firstFamilyURL}${resource}/${id}`)
     }
-
 
     e.preventDefault()
   }

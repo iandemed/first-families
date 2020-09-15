@@ -8,7 +8,16 @@ const RequestBody = ({verb, resource, onHTTPRequest}) => {
     let requestBody = {}
 
     let handleInput = (e) => {
-        requestBody[e.target.name] = e.target.value
+
+        let name = e.target.name
+
+        if (name === "partner"){
+            requestBody[name] = [e.target.value]
+        } else {
+            requestBody[name] = e.target.value
+        }
+
+        
     }
 
 
@@ -32,7 +41,7 @@ const RequestBody = ({verb, resource, onHTTPRequest}) => {
                 <input 
                     type="text" 
                     name = "partner" 
-                    placeholder='["1p"]'
+                    placeholder='1p'
                     onChange={handleInput}/>
                 <label> born: </label>
                 <input 

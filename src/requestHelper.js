@@ -7,27 +7,38 @@ module.exports = {
 
   get: (url) => {
     axios.get(url)
-    .then( (res => {
+    .then( (res) => {
       console.log(JSON.stringify(res.data, null, 4))
-    }))
+    })
   },
+
+
   post: (url, body) => {
     axios.post(url, body)
-      .then( (res => {
+      .then( (res) => {
         console.log(JSON.stringify(res.data, null, 4))
-    }))
+    })
   },
+
+  validPost: (body, resource) => {
+    if (resource === 'president'){
+      return (body["_id"] && body.born)
+    } else if (resource === 'firstSpouse'){
+      return (body["_id"] && body.partner && body.born)
+    }
+  },
+
   put: (url, body) => {
     axios.put(url, body)
-    .then( (res => {
-      console.log(JSON.stringify(res.data, null, 4))
-    }))
+    .then( (res) => {
+      console.log(res)
+    })
   },
   delete: (url) => {
     axios.delete(url)
-      .then( (res => {
+      .then( (res) => {
         console.log(JSON.stringify(res.data, null, 4))
-      }))
+      })
   },
 
   /* Helper functions to prepare the body for the HTTP requests */
@@ -43,17 +54,9 @@ module.exports = {
       if (body.died){
         body.died = new Date(body.died)
       }
-    
-      if (verb === 'POST'){
-          this.postCheck(body)
-      }
-
-        return body
+        
+      return body
       
-  },
-  postCheck: (body) => {
-      console.log("Checking Post Request")
-      console.log(body)
   }
 
 }
