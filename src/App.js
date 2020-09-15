@@ -8,8 +8,9 @@ import RequestBody from './Component/RequestBody'
 
 import './style/App.css'
 
+const requestHelper = require('./requestHelper.js')
+
 const firstFamilyURL = 'https://first-families-api.herokuapp.com/'
-const axios = require(`axios`).default
 
 function App() {
 
@@ -20,15 +21,13 @@ function App() {
   const makeHTTPRequest = (verb, url, body) => {
     
     if (verb === 'GET'){
-      axios.get(url)
-        .then( (res => {
-          console.log(JSON.stringify(res.data, null, 4))
-        }))
+      requestHelper.get(url)
     } else if (verb === 'POST') {
-      axios.post(url, body)
-        .then( (res => {
-          console.log(JSON.stringify(res.data, null, 4))
-        }))
+      requestHelper.post(url, body)
+    } else if (verb === 'PUT'){
+      requestHelper.put(url, body)
+    } else if (verb === 'DELETE'){
+      requestHelper.delete(url)
     }
   }
 
@@ -45,8 +44,8 @@ function App() {
   const handleSubmit = (e, body) => {      
   
     if (body){
-        let requestBody = prepareRequestBody(body)
-        makeHTTPRequest(verb, `${firstFamilyURL}${resource}`, body)
+      requestHelper.prepare(body, verb)
+      makeHTTPRequest(verb, `${firstFamilyURL}${resource}`, body)
     } else {
       makeHTTPRequest(verb, `${firstFamilyURL}${resource}`)
     }
@@ -55,22 +54,7 @@ function App() {
     e.preventDefault()
   }
 
-const prepareRequestBody = (body) => {
 
-  // Convert date strings into Date objects
-  if (body.date){
-    body.date = new Date(body.date)
-  }
-  if (body.born){
-    body.born = new Date(body.born)
-  }
-  if (body.died){
-    body.died = new Date(body.died)
-  }
-
-  return body
-
-}
 
   const createForm = () => {
     return (
