@@ -23,19 +23,24 @@ const HTTPRequest = ({apiURL, onVerbSelect, onResourceSelect, onIdChange, verb})
 
     return (
         <form className="HTTP-request">
-            <div className="request-line">
+            <div className="request-line">                
                 <select onChange={onVerbSelect}>
                     <option value="GET"> GET </option>            
                     <option value="POST"> POST </option>            
                     <option value="PUT"> PUT </option>            
                     <option value="DELETE"> DELETE </option>            
                 </select>
-                <p>{apiURL}</p>
+                <div className="request-url">
+                    <p>{apiURL}</p>
+                </div>
                 <select onChange={onResourceSelect}>
                     <option value="president"> president </option>            
                     <option value="firstSpouse"> firstSpouse </option>                       
                 </select>
-                <p>/</p>
+                <div className="request-url">
+                    <p>/</p>
+                </div>
+                
                 {idBox(verb)}
             </div>
         </form>

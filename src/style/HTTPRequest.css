@@ -1,13 +1,35 @@
-.HTTP-request, .HTTP-body {
+.HTTP-body, .HTTP-request {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.HTTP-request p {
+.request-line{
+    display: flex;
+    align-items: center;
+}
+
+.request-line p {
+    margin: 0px;
+}
+
+.request-line > * {
+    font-size: 14px;
     margin: 0px;
     display: inline-block;
+
+    height: 34px;
+}
+
+.request-url, select, input{
+    box-sizing: border-box;
+    padding: 6px 12px;
+}
+
+.request-url{
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
 }
 
 .form-item{
