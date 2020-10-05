@@ -26,7 +26,6 @@ Often we celebrate (or denouce) presidents for their political accomplishments a
     - [Dependencies](#dependencies)
     - [Authentication](#authentication)
   - [Additional Notes](#additional-notes)
-    - [Addressing Sally Hemmings and Thomas Jefferson's Legacy](#addressing-sally-hemmings-and-thomas-jefferson-s-legacy)
 
 ## Techincal Requirements
 
